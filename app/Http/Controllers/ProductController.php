@@ -70,7 +70,7 @@ class ProductController extends Controller
             'title'         => $request->title,
             'description'   => $request->description,
             'price'         => $request->price,
-            'stock'         => $request->stock,
+            'stock'         => $request->stock
         ]);
 
         //redirect to index
@@ -174,7 +174,7 @@ class ProductController extends Controller
         $product = Product::findOrFail($id);
 
         //delete image
-        Storage::delete(paths: 'products/'. $product->image);
+        Storage::delete('products/'. $product->image);
 
         //delete product
         $product->delete();
@@ -182,4 +182,4 @@ class ProductController extends Controller
         //redirect to index
         return redirect()->route('products.index')->with(['success' => 'Data Berhasil Dihapus!']);
     }
-}
+}   
